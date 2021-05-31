@@ -1,0 +1,8 @@
+flask
+flask-cors
+mlflow
+boto3
+pymysql
+scikit-learn
+nltk
+numpy

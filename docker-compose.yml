@@ -69,12 +69,37 @@ services:
         build: ./training
         image: training
         container_name: training
+        environment:
+            AWS_ACCESS_KEY_ID: "minioadmin"
+            AWS_SECRET_ACCESS_KEY: "minioadmin"
+            MLFLOW_S3_ENDPOINT_URL: "http://minio:9000"
+            MLFLOW_URI: "http://web:5000"
+        volumes:
+            - ./training/files:/home/jupyter
         expose:
             - "8080"
         ports:
             - "8080:8080"
         networks:
             - frontend
+
+    api:
+        restart: always
+        build: ./api
+        image: api
+        container_name: api
+        environment:
+            AWS_ACCESS_KEY_ID: "minioadmin"
+            AWS_SECRET_ACCESS_KEY: "minioadmin"
+            MLFLOW_S3_ENDPOINT_URL: "http://minio:9000"
+            MLFLOW_URI: "http://web:5000"
+        expose:
+            - "5005"
+        ports:
+            - "5005:5005"
+        networks:
+            - frontend
+            - backend
 
 networks:
     frontend:
