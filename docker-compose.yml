@@ -24,6 +24,8 @@ services:
         environment:
             MINIO_ACCESS_KEY: "minioadmin"
             MINIO_SECRET_KEY: "minioadmin"
+        volumes:
+            - ./artifact-store/data:/data
         expose:
             - "9000"
         ports:
