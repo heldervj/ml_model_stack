@@ -46,6 +46,7 @@ services:
         environment:
             MLFLOW__BACKEND_STORE_URI: "mysql+pymysql://root:senha123@db:3306/mlflow"
             MLFLOW_S3_ENDPOINT_URL: "http://minio:9000"
+            DEFAULT_S3: "s3://mlflow/"
             AWS_ACCESS_KEY_ID: "minioadmin"
             AWS_SECRET_ACCESS_KEY: "minioadmin"
         networks:
